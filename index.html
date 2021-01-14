@@ -27,14 +27,25 @@
             <li>rule seven</li>
         </ol>
         <label>
-            <input type="radio" name="rps" value="rock"></input>
-            <input type="radio" name="rps" value="paper"></input>
-            <input type="radio" name="rps" value="scissors"></input>
+            <input type="radio" name="rps" value="rock">rock</input>
+            <input type="radio" name="rps" value="paper">paper</input>
+            <input type="radio" name="rps" value="scissors">scissors</input>
         </label>
-        <div id="wins-element">wins</div>
-        <div id="loss-element">loses</div>
-        <div id="totals-element">total matches</div>
-        <div id="result-element">who won</div>
+        <span>
+            Wins:
+            <span id="wins-element"></span>
+        </span>
+        <span>
+            Loss:
+            <span id="loss-element"></span>
+        </span>
+        <span>
+            Total Matches:
+            <span id="totals-element"></span>
+        </span>
+        <span>
+            <span id="result-element"></span>
+        </span>
         <button id="submit-element" type="submit">submit</button>
         <button id="result-element" type="reset">new game</button>
     </main>
