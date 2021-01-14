@@ -1,5 +1,6 @@
 // import functions and grab DOM elements
-import { convertComputerInt } from './utils.js';
+import { convertComputerInt, doesUserWin } from './utils.js';
+
 const winsDisplay = document.getElementById('wins-element');
 const lossDisplay = document.getElementById('loss-element');
 const totalDisplay = document.getElementById('totals-element');
@@ -19,6 +20,7 @@ submitButton.addEventListener('click', () => {
     
     // get the value of user as a string
     totalMatches++;
+    totalDisplay.textContent = totalMatches;
     let userChoice = selectedChoice.value;
     let computerRandomInt = Math.floor(Math.random() * 2);
 
@@ -26,35 +28,14 @@ submitButton.addEventListener('click', () => {
     console.log(computerChoice);
     
 
-    // choice comparison
-    
-    if (userChoice === 'rock') {
-        if (computerChoice === 'scissors' || computerChoice === 'rock') {
-            currentWins++;
-            winsDisplay.textContent = currentWins;
-            resultDisplay.textContent = 'You Won!';
-        } else {
-            resultDisplay.textContent = 'You Lost!';
-            lossDisplay.textContent = totalMatches - currentWins;
-        }
-    } else if (userChoice === 'paper') {
-        if (computerChoice === 'rock' || computerChoice === 'paper') {
-            currentWins++;
-            winsDisplay.textContent = `Wins: ${currentWins}`;
-            resultDisplay.textContent = 'You Won!';
-        } else {
-            lossDisplay.textContent = totalMatches - currentWins;
-            resultDisplay.textContent = 'You Lost!';
-        }
+    // does user win?
+
+    if (doesUserWin(userChoice, computerChoice)) {
+        currentWins++;
+        winsDisplay.textContent = currentWins;
+        resultDisplay.textContent = 'You Won!';
     } else {
-        if (computerChoice === 'paper' || computerChoice === 'scissors') {
-            currentWins++;
-            winsDisplay.textContent = currentWins;
-            resultDisplay.textContent = 'You Won!';
-        } else {
-            lossDisplay.textContent = totalMatches - currentWins;
-            resultDisplay.textContent = 'You Lost!';
-        }
-    } 
-    totalDisplay.textContent = totalMatches;
-}); 
+        lossDisplay.textContent = totalMatches - currentWins;
+        resultDisplay.textContent = 'You Lost!';
+    }
+});
