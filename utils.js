@@ -1,27 +1,29 @@
 export function convertComputerInt(randomInt) {
-    if (randomInt === 0) {
+    if (randomInt === 1) {
         return 'rock';
-    } else if (randomInt === 1) {
+    }
+    if (randomInt === 2) {
         return 'paper';
-    } else {
+    } 
+    if (randomInt === 3) {
         return 'scissors';
     }
 }
 
 export function doesUserWin(user, computer) {
     if (user === computer) {
-        return true;
+        return 'draw';
     } else if (user === 'rock' && computer === 'scissors') {
-        return true;
+        return 'win';
     } else if (user === 'rock' && computer === 'paper') {
-        return false;
+        return 'lose';
     } else if (user === 'paper' && computer === 'rock') {
-        return true;
+        return 'win';
     } else if (user === 'paper' && computer === 'scissors') {
-        return false;
+        return 'lose';
     } else if (user === 'scissors' && computer === 'paper') {
-        return true;
+        return 'win';
     } else if (user === 'scissors' && computer === 'rock') {
-        return false;
+        return 'lose';
     }
 }

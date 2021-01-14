@@ -3,6 +3,7 @@ import { convertComputerInt, doesUserWin } from './utils.js';
 
 const winsDisplay = document.getElementById('wins-element');
 const lossDisplay = document.getElementById('loss-element');
+const drawDisplay = document.getElementById('draw-element');
 const totalDisplay = document.getElementById('totals-element');
 const resultDisplay = document.getElementById('result-element');
 const submitButton = document.getElementById('submit-element');
@@ -12,6 +13,8 @@ const resetCount = document.getElementById('reset-count');
 // initialize state
 let currentWins = 0;
 let totalMatches = 0;
+let currentDraws = 0;
+let currentLoss = 0;
 let reset = 0;
 
 // set event listeners to update state and DOM
@@ -24,22 +27,32 @@ submitButton.addEventListener('click', () => {
     totalMatches++;
     totalDisplay.textContent = totalMatches;
     let userChoice = selectedChoice.value;
-    let computerRandomInt = Math.floor(Math.random() * 2);
+    let computerRandomInt = Math.ceil(Math.random() * 3);
 
     let computerChoice = convertComputerInt(computerRandomInt);
     console.log(computerChoice);
+
+    const gameResults = doesUserWin(userChoice, computerChoice);
     
 
     // does user win?
 
-    if (doesUserWin(userChoice, computerChoice)) {
+    if (gameResults === 'win') {
         currentWins++;
         winsDisplay.textContent = currentWins;
         resultDisplay.textContent = 'You Won!';
-    } else {
-        lossDisplay.textContent = totalMatches - currentWins;
+    }
+    if (gameResults === 'lose') {
+        currentLoss++;
+        lossDisplay.textContent = currentLoss;
         resultDisplay.textContent = 'You Lost!';
     }
+    if (gameResults === 'draw') {
+        currentDraws++;
+        drawDisplay.textContent = currentDraws;
+        resultDisplay.textContent = 'Its a draw!';
+    }
+    
 });
 
 resetButton.addEventListener('click', () => {
@@ -47,7 +60,9 @@ resetButton.addEventListener('click', () => {
     resetCount.textContent = reset;
     totalMatches = 0;
     currentWins = 0;
+    currentDraws = 0;
     winsDisplay.textContent = currentWins;
+    drawDisplay.textContent = currentDraws;
     lossDisplay.textContent = totalMatches - currentWins;
     totalDisplay.textContent = totalMatches;
     resultDisplay.textContent = '';
