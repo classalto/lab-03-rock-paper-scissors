@@ -26,28 +26,34 @@
             <li>We'll run some calculations to determine the winner.</li>
             <li>After we've determined the winner, you can keep track of the results below.</li>
         </ol>
-        <label>
-            <input type="radio" name="rps" value="rock">rock</input>
-            <input type="radio" name="rps" value="paper">paper</input>
-            <input type="radio" name="rps" value="scissors">scissors</input>
-        </label>
-        <span>
-            Wins:
-            <span id="wins-element"></span>
-        </span>
-        <span>
-            Loss:
-            <span id="loss-element"></span>
-        </span>
-        <span>
-            Total Matches:
-            <span id="totals-element"></span>
-        </span>
-        <span>
-            <span id="result-element"></span>
-        </span>
-        <button id="submit-element" type="submit">submit</button>
-        <button id="result-element" type="reset">new game</button>
+        <section class="game">
+            <label>
+                <input type="radio" name="rps" value="rock">rock</input>
+                <input type="radio" name="rps" value="paper">paper</input>
+                <input type="radio" name="rps" value="scissors">scissors</input>
+            </label>
+            <span class="wins">
+                Wins:
+                <span id="wins-element"></span>
+            </span>
+            <span>
+                Loss:
+                <span id="loss-element"></span>
+            </span>
+            <span>
+                Total Matches:
+                <span id="totals-element"></span>
+            </span>
+            <span>
+                <span id="result-element"></span>
+            </span>
+            <button id="submit-element" type="submit">submit</button>
+            <button id="reset-element" type="reset">new game</button>
+            <span>
+                New Game Count:
+                <span id="reset-count"></span>
+            </span>    
+        </section>
     </main>
     
 
