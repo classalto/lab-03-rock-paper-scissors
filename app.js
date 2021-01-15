@@ -9,13 +9,21 @@ const resultDisplay = document.getElementById('result-element');
 const submitButton = document.getElementById('submit-element');
 const resetButton = document.getElementById('reset-element');
 const resetCount = document.getElementById('reset-count');
+const newGameSpan = document.getElementById('new-game-span');
 
 // initialize state
+
 let currentWins = 0;
 let totalMatches = 0;
 let currentDraws = 0;
 let currentLoss = 0;
 let reset = 0;
+
+resetButton.style.display = 'none';
+newGameSpan.style.display = 'none';
+
+
+
 
 // set event listeners to update state and DOM
 submitButton.addEventListener('click', () => {
@@ -52,6 +60,10 @@ submitButton.addEventListener('click', () => {
         drawDisplay.textContent = currentDraws;
         resultDisplay.textContent = 'Its a draw!';
     }
+
+    resetButton.style.display = 'block';
+    newGameSpan.style.display = 'block';
+    
     
 });
 
